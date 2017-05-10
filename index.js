@@ -19,6 +19,9 @@ function Multer (options) {
 
   this.limits = options.limits
   this.preservePath = options.preservePath
+  this.highWaterMark = options.highWaterMark
+  this.fileHwm = options.fileHwm
+  this.defCharset = options.defCharset
   this.fileFilter = options.fileFilter || allowAll
 }
 
@@ -47,6 +50,9 @@ Multer.prototype._makeMiddleware = function (fields, fileStrategy) {
     return {
       limits: this.limits,
       preservePath: this.preservePath,
+      highWaterMark: this.highWaterMark,
+      fileHwm: this.fileHwm,
+      defCharset: this.defCharset,
       storage: this.storage,
       fileFilter: wrappedFileFilter,
       fileStrategy: fileStrategy
@@ -77,6 +83,9 @@ Multer.prototype.any = function () {
     return {
       limits: this.limits,
       preservePath: this.preservePath,
+      highWaterMark: this.highWaterMark,
+      fileHwm: this.fileHwm,
+      defCharset: this.defCharset,
       storage: this.storage,
       fileFilter: this.fileFilter,
       fileStrategy: 'ARRAY'
